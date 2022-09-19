@@ -7,3 +7,25 @@ READ AND WRITE “totalHarga” with number
 READ AND WRITE “data” with list
 READ AND WRITE “totalPembayaran” with number
 
+FUNCTION tambahMenu()
+	WHILE TRUE
+		INPUT index of “namaMenu” with number
+		INPUT “jumlah” with number
+
+		IF “namaMenu” index 0
+			STORE “harga” with number 5000
+		ELSE IF “namaMenu” index 1
+			STORE “harga” with number 6000
+		ELSE IF “namaMenu” index 2
+			STORE “harga” with number 7000
+
+		STORE “totalHarga” with CALCULATE “harga” MULTIPLY BY “jumlah”
+		STORE “data” with “namaMenu”, “harga”, “totalHarga”
+	
+		DISPLAY “Ada Lagi?”
+		INPUT “ulang” with string
+		IF “ulang” = “ya”
+			CONTINUE
+		ELSE IF “ulang” = “tidak”
+			STOP
+
