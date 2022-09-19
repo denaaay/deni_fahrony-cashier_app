@@ -1,0 +1,9 @@
+BEGIN
+
+READ AND WRITE “namaMenu” with list
+READ AND WRITE “harga” with number
+READ AND WRITE “jumlah” with number
+READ AND WRITE “totalHarga” with number
+READ AND WRITE “data” with list
+READ AND WRITE “totalPembayaran” with number
+
