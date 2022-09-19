@@ -40,3 +40,11 @@ ELSE IF “edit” = “selesai”
 	STORE “totalPembayaran” with CALCULATE SUM OF “totalHarga” in “data”
 	DISPLAY “totalPembayaran”
 
+INPUT “pembayaran” with number
+IF “pembayaran” >= “totalPembayaran”
+	STORE “kembalian” with CALCULATE “pembayaran” MINUS “totalPembayaran”
+	DISPLAY “kembalian”
+ELSE
+	RETURN TO INPUT “pembayaran”
+
+END
