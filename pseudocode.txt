@@ -29,3 +29,14 @@ FUNCTION tambahMenu()
 		ELSE IF “ulang” = “tidak”
 			STOP
 
+DISPLAY “data”
+INPUT “edit” with string
+IF “edit” = “tambah”
+	CALL FUNCTION tambahMenu()
+ELSE IF “edit” = “hapus”
+	INPUT “namaMenu” with string
+	DELETE “namaMenu” in “data”
+ELSE IF “edit” = “selesai”
+	STORE “totalPembayaran” with CALCULATE SUM OF “totalHarga” in “data”
+	DISPLAY “totalPembayaran”
+
