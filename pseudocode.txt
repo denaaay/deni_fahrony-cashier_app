@@ -1,0 +1,50 @@
+BEGIN
+
+READ AND WRITE “namaMenu” with list
+READ AND WRITE “harga” with number
+READ AND WRITE “jumlah” with number
+READ AND WRITE “totalHarga” with number
+READ AND WRITE “data” with list
+READ AND WRITE “totalPembayaran” with number
+
+FUNCTION tambahMenu()
+	WHILE TRUE
+		INPUT index of “namaMenu” with number
+		INPUT “jumlah” with number
+
+		IF “namaMenu” index 0
+			STORE “harga” with number 5000
+		ELSE IF “namaMenu” index 1
+			STORE “harga” with number 6000
+		ELSE IF “namaMenu” index 2
+			STORE “harga” with number 7000
+
+		STORE “totalHarga” with CALCULATE “harga” MULTIPLY BY “jumlah”
+		STORE “data” with “namaMenu”, “harga”, “totalHarga”
+	
+		DISPLAY “Ada Lagi?”
+		INPUT “ulang” with string
+		IF “ulang” = “ya”
+			CONTINUE
+		ELSE IF “ulang” = “tidak”
+			STOP
+
+DISPLAY “data”
+INPUT “edit” with string
+IF “edit” = “tambah”
+	CALL FUNCTION tambahMenu()
+ELSE IF “edit” = “hapus”
+	INPUT “namaMenu” with string
+	DELETE “namaMenu” in “data”
+ELSE IF “edit” = “selesai”
+	STORE “totalPembayaran” with CALCULATE SUM OF “totalHarga” in “data”
+	DISPLAY “totalPembayaran”
+
+INPUT “pembayaran” with number
+IF “pembayaran” >= “totalPembayaran”
+	STORE “kembalian” with CALCULATE “pembayaran” MINUS “totalPembayaran”
+	DISPLAY “kembalian”
+ELSE
+	RETURN TO INPUT “pembayaran”
+
+END
